@@ -1,14 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-const buttonStyles = {
-  border: "1px solid #ccc",
-  background: "#fff",
-  padding: 15,
-  margin: 5,
-  width: 200,
-  cursor: "pointer"
-};
+import "./styles.css";
 
 class Stopwatch extends React.Component {
   state = { lapse: 0, running: false };
@@ -37,14 +29,12 @@ class Stopwatch extends React.Component {
   render() {
     const { lapse, running } = this.state;
     return (
-      <div style={{ textAlign: "center" }}>
-        <label style={{ fontSize: "5em", display: "block" }}>{lapse}ms</label>
-        <button onClick={this.handleRunClick} style={buttonStyles}>
+      <div className="App">
+        <label>{lapse}ms</label>
+        <button className={running && "active"} onClick={this.handleRunClick}>
           {running ? "Stop" : "Start"}
         </button>
-        <button onClick={this.handleClearClick} style={buttonStyles}>
-          Clear
-        </button>
+        <button onClick={this.handleClearClick}>Clear</button>
       </div>
     );
   }
